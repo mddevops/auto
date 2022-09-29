@@ -56,42 +56,33 @@ class autodrive extends Command
 
             foreach ($result['offers']['offer'] as $index => $data) {
 
-                /*Если есть запись, обновляем.*/
-                $catalog = AutoCatalog::find($data['id']);
+                $auto = AutoCatalog::find($data['id']);
 
-                if (!empty($catalog)){
-                    $catalog->id = $data['id'];
-                    $catalog->mark = $data['mark'] == [] ? null : $data['mark'];
-                    $catalog->model = $data['model'] == [] ? null : $data['model'];
-                    $catalog->generation = $data['generation'] == [] ? null : $data['generation'];
-                    $catalog->year = $data['year'] == [] ? null : $data['year'];
-                    $catalog->run = $data['run'] == [] ? null : $data['run'];
-                    $catalog->color = $data['color'] == [] ? null : $data['color'];
-                    $catalog->body_type = $data['body-type'] == [] ? null : $data['body-type'];
-                    $catalog->engine_type = $data['engine-type'] == [] ? null : $data['engine-type'];
-                    $catalog->transmission = $data['transmission'] == [] ? null : $data['transmission'];
-                    $catalog->gear_type = $data['gear-type'] == [] ? null : $data['gear-type'];
-                    $catalog->generation_id = $data['generation_id'] == [] ? null : $data['generation_id'];
-                    $catalog->save();
+                if (!empty($auto)){
+
+                    /*Если есть запись, обновляем.*/
+                    $catalog = AutoCatalog::find($data['id']);
 
                 }else{
 
                     /*Если нет записи, добавляем.*/
                     $catalog = new AutoCatalog;
-                    $catalog->id = $data['id'];
-                    $catalog->mark = $data['mark'] == [] ? null : $data['mark'];
-                    $catalog->model = $data['model'] == [] ? null : $data['model'];
-                    $catalog->generation = $data['generation'] == [] ? null : $data['generation'];
-                    $catalog->year = $data['year'] == [] ? null : $data['year'];
-                    $catalog->run = $data['run'] == [] ? null : $data['run'];
-                    $catalog->color = $data['color'] == [] ? null : $data['color'];
-                    $catalog->body_type = $data['body-type'] == [] ? null : $data['body-type'];
-                    $catalog->engine_type = $data['engine-type'] == [] ? null : $data['engine-type'];
-                    $catalog->transmission = $data['transmission'] == [] ? null : $data['transmission'];
-                    $catalog->gear_type = $data['gear-type'] == [] ? null : $data['gear-type'];
-                    $catalog->generation_id = $data['generation_id'] == [] ? null : $data['generation_id'];
-                    $catalog->save();
+
                 }
+
+                $catalog->id = $data['id'];
+                $catalog->mark = $data['mark'] == [] ? null : $data['mark'];
+                $catalog->model = $data['model'] == [] ? null : $data['model'];
+                $catalog->generation = $data['generation'] == [] ? null : $data['generation'];
+                $catalog->year = $data['year'] == [] ? null : $data['year'];
+                $catalog->run = $data['run'] == [] ? null : $data['run'];
+                $catalog->color = $data['color'] == [] ? null : $data['color'];
+                $catalog->body_type = $data['body-type'] == [] ? null : $data['body-type'];
+                $catalog->engine_type = $data['engine-type'] == [] ? null : $data['engine-type'];
+                $catalog->transmission = $data['transmission'] == [] ? null : $data['transmission'];
+                $catalog->gear_type = $data['gear-type'] == [] ? null : $data['gear-type'];
+                $catalog->generation_id = $data['generation_id'] == [] ? null : $data['generation_id'];
+                $catalog->save();
 
                 /*Собираем id XML данных в массив*/
                 $dataArray[] = [
