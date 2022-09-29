@@ -15,16 +15,16 @@ class CreateAutoCatalogsTable extends Migration
     {
         Schema::create('auto_catalogs', function (Blueprint $table) {
             $table->id();
-            $table->string('mark')->nullable();
-            $table->string('model')->nullable();
-            $table->string('generation')->nullable();
-            $table->year('year')->nullable();
-            $table->integer('run')->nullable();
-            $table->string('color')->nullable();
-            $table->string('body_type')->nullable();
-            $table->string('engine_type')->nullable();
-            $table->string('transmission')->nullable();
-            $table->string('gear_type')->nullable();
+            $table->string('mark')->index('mark')->nullable();
+            $table->string('model')->index('model')->nullable();
+            $table->string('generation')->index('generation')->nullable();
+            $table->year('year')->index('year')->nullable();
+            $table->integer('run')->index('run')->nullable();
+            $table->string('color')->index('color')->nullable();
+            $table->string('body_type')->index('body_type')->nullable();
+            $table->string('engine_type')->index('engine_type')->nullable();
+            $table->string('transmission')->index('transmission')->nullable();
+            $table->string('gear_type')->index('gear_type')->nullable();
             $table->integer('generation_id')->nullable();
             $table->timestamps();
         });
